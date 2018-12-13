@@ -138,6 +138,7 @@ public class getData {
         }else{
             now = Long.parseLong(Config.now_time);
         }
+
         while(true){
             long start_time = System.currentTimeMillis();
 
@@ -209,12 +210,12 @@ public class getData {
                 if(now * 1000 > tmp){
                     try{
                         System.out.println("waiting for next batch...");
-                        System.out.println("-----------------------------------------");
                         Thread.sleep((now*1000 - tmp));
                     }catch (Exception exception){
                         exception.printStackTrace();
                     }
                 }
+                System.out.println("-----------------------------------------");
             }
         }
     }
