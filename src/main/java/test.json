@@ -1,0 +1,44 @@
+{"time_month": "2018-11", "message": "{\"time\": \"2018-11-03 14:54:00\", \"socp\": \"app41_intf2\", \"trans_count_total\": 739, \"duration_avg\": 0.1867749031622988, \"succ_p\": 0.8768606224627875, \"resp_p\": 0.993234100135318}", "succ_p": 0.8768606224627875, "time_min_zero": "2018-11-03 14:50", "source": "bpc", "time_hours": "2018-11-03 14", "time_sec": "2018-11-03 14:55:21", "gl2_source_input": "5b1e2b3e1aa8d611dd8e54df", "trans_count_total": 739, "timestamp": "2018-11-03 06:55:21.685", "socp": "app41_intf2", "source_type": "bpc_metric", "time_nano": 13655846720890545, "time_min": "2018-11-03 14:55", "gl2_source_node": "18494af1-5869-4697-99be-21cdfb96f4ae", "resp_p": 0.993234100135318, "duration_avg": 0.1867749031622988, "_time": "2018-11-03T14:55:21.685Z", "streams": ["000000000000000000000001", "5a55781ab2e154769c288239"], "time": "2018-11-03 14:54:00", "time_day": "2018-11-03", "bpc_app_id": "app41"}
+
+//            final CountDownLatch countDownLatch = new CountDownLatch(thread_num);
+//            for (int i = 0 ;i < thread_num; i++) {
+//                final int threadID = i;
+//                jsonArray[i] = new JSONArray();
+//                try{
+//                    scrollResp[i] = search
+//                            .slice(new SliceBuilder(i, thread_num))
+//                            .get();
+//                }catch (Exception e){
+//                    System.out.println(e.getMessage());
+//                    countDownLatch.countDown();
+//                    continue;
+//                }
+//                new Thread(() -> {
+//                    try{
+//                        do {
+//                            for (SearchHit hits : scrollResp[threadID].getHits().getHits()) {
+//                                jsonArray[threadID].add(new JSONObject(hits.getSource()));
+//                            }
+//                            scrollResp[threadID] = client.prepareSearchScroll(scrollResp[threadID].getScrollId()).setScroll(new TimeValue(600000)).get();
+//                        } while (scrollResp[threadID].getHits().getHits().length != 0);
+//                    }catch (Exception e){
+//                        System.out.println(e.getMessage());
+//                    }
+//                    countDownLatch.countDown();
+//                }).start();
+//            }
+//            try{
+//                countDownLatch.await();
+//            }catch (Exception e){
+//                e.printStackTrace();
+//            }
+
+//
+//            JSONArray docList = new JSONArray();
+//            ClearScrollRequest request = new ClearScrollRequest();
+//            for(int i = 0; i < thread_num; i++){
+//                request.addScrollId(scrollResp[i].getScrollId());
+//                docList.addAll(jsonArray[i]);
+//                jsonArray[i].clear();
+//            }
+//            client.clearScroll(request);
